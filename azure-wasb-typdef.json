@@ -1,0 +1,251 @@
+{
+    "enumDefs": [],
+    "structDefs": [
+        {
+            "name":        "azure_tag",
+            "description": "Atlas Type representing a tag/value pair associated with an Azure storage, eg Azure Storage zone",
+            "serviceType": "azure",
+            "typeVersion": "1.0",
+            "attributeDefs": [
+                {
+                    "name":        "key",
+                    "typeName":    "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional":  false,
+                    "isUnique":    false
+                },
+                {
+                    "name":        "value",
+                    "typeName":    "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional":  false,
+                    "isUnique":    false
+                }
+            ]
+        }
+
+    ],
+    "classificationDefs": [],
+    "entityDefs": [
+        {
+            "name":        "azure_wasb_zone",
+            "description": "Atlas Type representing a Bucket in an Azure WASB object store",
+            "superTypes":  [ "DataSet" ],
+            "serviceType": "azure",
+            "typeVersion": "1.0",
+            "attributeDefs": [
+                {
+                    "name":        "subscription",
+                    "typeName":    "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional":  true,
+                    "isUnique":    false
+                },
+                {
+                    "name":        "subscriptionid",
+                    "typeName":    "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional":  true,
+                    "isUnique":    false
+                },
+                {
+                    "name":        "resourcegroup",
+                    "typeName":    "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional":  true,
+                    "isUnique":    false
+                },
+                {
+                    "name":        "replication",
+                    "typeName":    "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional":  true,
+                    "isUnique":    false
+                },
+                {
+                    "name":        "accesstier",
+                    "typeName":    "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional":  true,
+                    "isUnique":    false
+                },
+                {
+                    "name":        "region",
+                    "typeName":    "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional":  true,
+                    "isUnique":    false
+                },
+                {
+                    "name":        "name",
+                    "typeName":    "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional":  false,
+                    "isUnique":    false
+                },
+                {
+                    "name":        "wasb-zone",
+                    "typeName":    "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional":  false,
+                    "isUnique":    false
+                },
+                {
+                    "name":        "primaryblob-service-endpoint",
+                    "typeName":    "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional":  true,
+                    "isUnique":    false
+                },
+                {
+                    "name":        "secure-transfer",
+                    "typeName":    "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional":  true,
+                    "isUnique":    false
+                },
+                {
+                    "name":        "azureTags",
+                    "typeName":    "array<azure_tag>",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional":  true,
+                    "isUnique":    false
+                },
+                {
+                    "name":        "createtime",
+                    "typeName":    "date",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional":  true,
+                    "isUnique":    false
+                }
+            ]
+        },
+        {
+            "name":        "azure_wasb_container",
+            "description": "Atlas Type representing a container (prefix) in an azure wasb Storage zone",
+            "superTypes":  [ "azure_wasb_zone" ],
+            "serviceType": "azure",
+            "typeVersion": "1.0",
+            "attributeDefs": [
+                {
+                    "name":        "container_url",
+                    "typeName":    "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional":  false,
+                    "isUnique":    true
+                },
+                {
+                    "name":        "hdfs_wasb_url",
+                    "typeName":    "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional":  false,
+                    "isUnique":    false
+                },
+                {
+                    "name":        "container_createTime",
+                    "typeName":    "date",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional":  true,
+                    "isUnique":    false
+                }
+            ]
+        },
+                {
+            "name":        "azure_wasb_blob",
+            "description": "Atlas Type representing an blob (file) in an azure wasb Storage Zone",
+            "superTypes":  [ "azure_wasb_container" ],
+            "serviceType": "azure",
+            "typeVersion": "1.0",
+            "attributeDefs": [
+                {
+                    "name":        "blob_filename",
+                    "typeName":    "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional":  false,
+                    "isUnique":    false
+                },
+                {
+                    "name":        "hdfs_blob_filename",
+                    "typeName":    "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional":  false,
+                    "isUnique":    false
+                },
+                {
+                    "name":        "createTime",
+                    "typeName":    "date",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional":  true,
+                    "isUnique":    false
+                }
+            ]
+        }
+
+    ],
+    "relationshipDefs": [
+        {
+            "name":                 "azure_wasb_zone_azure_wasb_containers",
+            "serviceType":          "azure",
+            "typeVersion":          "1.0",
+            "relationshipCategory": "COMPOSITION",
+            "endDef1": {
+                "type":              "azure_wasb_zone",
+                "name":              "containers",
+                "isContainer":       true,
+                "cardinality":       "SET",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type":               "azure_wasb_container",
+                "name":               "zone",
+                "isContainer":       false,
+                "cardinality":       "SINGLE",
+                "isLegacyAttribute": true
+            },
+            "propagateTags": "ONE_TO_TWO"
+        },
+        {
+            "name":                 "azure_wasb_container_azure_wasb_blob",
+            "serviceType":          "azure",
+            "typeVersion":          "1.0",
+            "relationshipCategory": "COMPOSITION",
+            "endDef1": {
+                "type":              "azure_wasb_container",
+                "name":              "blobs",
+                "isContainer":       true,
+                "cardinality":       "SET",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type":              "azure_wasb_blob",
+                "name":              "containers",
+                "isContainer":       false,
+                "cardinality":       "SINGLE",
+                "isLegacyAttribute": true
+            },
+            "propagateTags": "ONE_TO_TWO"
+        }
+
+
+    ]
+}
